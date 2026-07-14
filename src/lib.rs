@@ -11,8 +11,10 @@ use serde::{Deserialize, Serialize, de::IgnoredAny};
 use serde_with::{DisplayFromStr, serde_as};
 use url::Url;
 
+/// Officially hosted at [https://meta.fabricmc.net/](https://meta.fabricmc.net/).
 pub const META_API: &str = "https://meta.fabricmc.net/";
 
+/// See [`/v2/versions`](https://github.com/FabricMC/fabric-meta#v2versions).
 #[derive(Clone, Serialize, Deserialize)]
 #[serde(deny_unknown_fields, rename_all = "camelCase")]
 pub struct FabricMeta {
@@ -32,6 +34,7 @@ pub struct FabricMeta {
     pub installer: Vec<Installer>,
 }
 
+/// See [`/v2/versions/game`](https://github.com/FabricMC/fabric-meta#v2versionsgame).
 #[derive(Clone, Serialize, Deserialize)]
 #[serde(deny_unknown_fields, rename_all = "camelCase")]
 pub struct Game {
@@ -43,6 +46,7 @@ pub struct Game {
     pub stable: bool,
 }
 
+/// See [`/v2/versions/yarn`](https://github.com/FabricMC/fabric-meta#v2versionsyarn).
 #[serde_as]
 #[derive(Clone, Serialize, Deserialize)]
 #[serde(deny_unknown_fields, rename_all = "camelCase")]
@@ -61,6 +65,7 @@ pub struct Mapping {
     pub stable: bool,
 }
 
+/// See [`/v2/versions/intermediary`](https://github.com/FabricMC/fabric-meta#v2versionsintermediary).
 #[serde_as]
 #[derive(Clone, Serialize, Deserialize)]
 #[serde(deny_unknown_fields, rename_all = "camelCase")]
@@ -73,6 +78,7 @@ pub struct Intermediary {
     pub stable: bool,
 }
 
+/// See [`/v2/versions/loader`](https://github.com/FabricMC/fabric-meta#v2versionsloader).
 #[serde_as]
 #[derive(Clone, Serialize, Deserialize)]
 #[serde(deny_unknown_fields, rename_all = "camelCase")]
@@ -89,6 +95,7 @@ pub struct Loader {
     pub stable: bool,
 }
 
+/// See [`/v2/versions`](https://github.com/FabricMC/fabric-meta#v2versions).
 #[serde_as]
 #[derive(Clone, Serialize, Deserialize)]
 #[serde(deny_unknown_fields, rename_all = "camelCase")]
@@ -103,6 +110,7 @@ pub struct Installer {
     pub stable: bool,
 }
 
+/// See [`/v2/versions/loader/:game_version`](https://github.com/FabricMC/fabric-meta#v2versionsloadergame_version).
 #[derive(Clone, Serialize, Deserialize)]
 #[serde(deny_unknown_fields, rename_all = "camelCase")]
 pub struct LoaderWithIntermediary {
@@ -114,6 +122,7 @@ pub struct LoaderWithIntermediary {
     pub _launcher_meta: Option<IgnoredAny>,
 }
 
+/// See [`/v2/versions/loader/:game_version/:loader_version/profile/json`](https://github.com/FabricMC/fabric-meta#v2versionsloadergame_versionloader_versionprofilejson).
 #[derive(Clone, Serialize, Deserialize)]
 #[serde(deny_unknown_fields, rename_all = "camelCase")]
 pub struct Profile {
@@ -135,6 +144,7 @@ pub struct Profile {
     pub libraries: Vec<Library>,
 }
 
+/// See [`/v2/versions/loader/:game_version/:loader_version/profile/json`](https://github.com/FabricMC/fabric-meta#v2versionsloadergame_versionloader_versionprofilejson).
 #[serde_as]
 #[derive(Clone, Serialize, Deserialize)]
 #[serde(deny_unknown_fields, rename_all = "camelCase")]
