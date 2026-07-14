@@ -1,14 +1,22 @@
 [package]
 name = "fabric-meta-api"
-version = "0.1.0"
+version = "1.0.0-rc.1+v2"
 edition = "2024"
+authors = ["misaka10987 <misaka10987@outlook.com>"]
+description = "Rust Bindings for Minecraft Fabric Meta API."
+documentation = "https://github.com/FabricMC/fabric-meta"
+homepage = "https://github.com/misaka10987/fabric-meta-api"
+repository = "https://github.com/misaka10987/fabric-meta-api"
+readme = "README.md"
+keywords = ["minecraft", "fabric", "meta", "api", "http"]
+license = "MIT"
 
 [dependencies]
 mc-launchermeta = "0.1.1"
 reqwest = { version = "0.13.4", features = ["json"], optional = true }
 serde = { version = "1.0.228", features = ["derive"] }
 url = { version = "2.5.8", features = ["serde"] }
-creeper-maven-coord = { path = "../creeper-maven-coord" }
+creeper-maven-coord = "1.0.0"
 anyhow = "1.0.103"
 serde_with = "3.21.0"
 
