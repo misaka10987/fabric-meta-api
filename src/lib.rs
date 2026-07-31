@@ -164,3 +164,25 @@ pub struct Library {
 
     pub size: Option<u64>,
 }
+
+/// See [`/v2/versions/loader/:game_version/:loader_version/server/json`](https://github.com/FabricMC/fabric-meta#v2versionsloadergame_versionloader_versionserverjson).
+#[derive(Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields, rename_all = "camelCase")]
+pub struct Server {
+    pub id: String,
+
+    pub inherits_from: String,
+
+    pub release_time: String,
+
+    pub time: String,
+
+    #[serde(rename = "type")]
+    pub kind: VersionKind,
+
+    pub main_class: String,
+
+    pub arguments: Arguments,
+
+    pub libraries: Vec<Library>,
+}

@@ -4,6 +4,7 @@ use url::Url;
 
 use crate::{
     FabricMeta, Game, Intermediary, Loader, LoaderWithIntermediary, META_API, Mapping, Profile,
+    Server,
 };
 
 /// An HTTP client for interaction with the Fabric Meta API.
@@ -92,6 +93,13 @@ impl FabricMetaClient {
     /// Returns the JSON file that should be used in the standard Minecraft launcher.
     pub async fn profile(&self, game: &str, loader: &str) -> anyhow::Result<Profile> {
         let path = format!("/v2/versions/loader/{game}/{loader}/profile/json");
+
+        self.get_meta(&path).await
+    }
+
+    /// Returns the JSON file in format of the launcher JSON, but with the server's main class.
+    pub async fn server(&self, game: &str, loader: &str) -> anyhow::Result<Server> {
+        let path = format!("/v2/versions/loader/{game}/{loader}/server/json");
 
         self.get_meta(&path).await
     }
