@@ -1,3 +1,5 @@
+use std::sync::Arc;
+
 use dashmap::{DashMap, mapref::one::Ref};
 use reqwest::Client;
 use serde::de::DeserializeOwned;
@@ -9,9 +11,10 @@ use crate::{
 };
 
 /// An HTTP client for interaction with the Fabric Meta API.
+#[derive(Clone)]
 pub struct FabricMetaClient {
     http: Client,
-    cache: Cache,
+    cache: Arc<Cache>,
 }
 
 impl FabricMetaClient {
