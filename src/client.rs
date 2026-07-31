@@ -3,6 +3,7 @@ use std::sync::Arc;
 use dashmap::{DashMap, mapref::one::Ref};
 use reqwest::Client;
 use serde::de::DeserializeOwned;
+use tokio_throttle::Throttle;
 use url::Url;
 
 use crate::{
@@ -10,16 +11,18 @@ use crate::{
     Server,
 };
 
+pub use tokio_throttle;
+
 /// An HTTP client for interaction with the Fabric Meta API.
 #[derive(Clone)]
 pub struct FabricMetaClient {
-    http: Client,
+    http: Throttle<Client>,
     cache: Arc<Cache>,
 }
 
 impl FabricMetaClient {
     /// Reusing the provided `reqwest::Client`.
-    pub fn new(http: Client) -> Self {
+    pub fn new(http: Throttle<Client>) -> Self {
         Self {
             http,
             cache: Default::default(),
@@ -31,7 +34,7 @@ impl FabricMetaClient {
 
         let url = META_API.parse::<Url>().unwrap().join(path)?;
 
-        let res = self.http.get(url).send().await?.json().await?;
+        let res = self.http.get().await.get(url).send().await?.json().await?;
 
         Ok(res)
     }
