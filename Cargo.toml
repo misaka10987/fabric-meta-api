@@ -1,6 +1,6 @@
 [package]
 name = "fabric-meta-api"
-version = "1.0.0-rc.2+v2"
+version = "1.0.0-rc.3+v2"
 edition = "2024"
 authors = ["misaka10987 <misaka10987@outlook.com>"]
 description = "Rust Bindings for Minecraft Fabric Meta API."

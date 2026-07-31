@@ -300,7 +300,7 @@ checksum = "877a4ace8713b0bcf2a4e7eec82529c029f1d0619886d18145fea96c3ffe5c0f"
 
 [[package]]
 name = "fabric-meta-api"
-version = "1.0.0-rc.2+v2"
+version = "1.0.0-rc.3+v2"
 dependencies = [
  "anyhow",
  "creeper-maven-coord",
@@ -1580,6 +1580,8 @@ dependencies = [
 [[package]]
 name = "tokio-throttle"
 version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bc8ecd26e4999434048062731b0c0658d0ee4a324a331dd907ee50fb2a5a3c04"
 dependencies = [
  "tokio",
 ]
